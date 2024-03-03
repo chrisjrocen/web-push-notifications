@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Notification</title>
+</head>
+
+<body>
+
+    <h2>Add Notification</h2>
+
+    <form action="scripts/add_notification.php" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+
+        <label for="icon">Icon URL:</label><br>
+        <input type="text" id="icon" name="icon"><br><br>
+
+        <label for="url">URL:</label><br>
+        <input type="text" id="url" name="url"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>
