@@ -1,0 +1,64 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Function to retrieve notifications from the server
+        function getNotifications() {
+            $.ajax({
+                url: "scripts/get_notifications.php", // path of your PHP script to fetch notifications
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    // Clear existing notifications
+                    $("#notifications").empty();
+                    // Display notifications
+                    if (response && response.length > 0) {
+                        response.forEach(function (notification) {
+                            // Display each notification
+                            var notificationElement = '<div>';
+                            notificationElement += '<strong>' + notification.name + '</strong><br>';
+                            notificationElement += notification.message + '<br>';
+                            notificationElement += '<a href="' + notification.url + '">View</a>';
+                            notificationElement += '</div><hr>';
+                            $("#notifications").append(notificationElement);
+                        });
+                    } else {
+                        $("#notifications").html("No notifications available");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching notifications:", error);
+                }
+            });
+        }
+
+        // Retrieve notifications initially
+        getNotifications();
+
+        // Set interval to periodically fetch notifications
+        setInterval(function () {
+            getNotifications();
+        }, 60000); // Fetch notifications every minute (adjust as needed)
+    });
+
+    // Submit notification form
+        $("#notificationForm").submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url: "add_notification.php", // Change to the path of your PHP script to add notifications
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    // Reset form and fetch notifications
+                    $("#notificationForm")[0].reset();
+                    getNotifications();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error adding notification:", error);
+                }
+            });
+        });
+</script>
+</body>
+
+</html>

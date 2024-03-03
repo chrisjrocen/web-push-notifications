@@ -1,30 +1,26 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Add Notification</title>
-</head>
-
-<body>
-
-    <h2>Add Notification</h2>
-
+<div class="container mt-5">
+    <h2 class="mb-4">Add Notification</h2>
     <form action="scripts/add_notification.php" method="post">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+        <div class="form-group">
+            <label for="name">Name:</label><br>
+            <input type="text" class="form-control" id="name" name="name" required><br><br>
+        </div>
 
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" required></textarea><br><br>
+        <div class="form-group">
+            <label for="message">Message:</label><br>
+            <textarea class="form-control" id="message" name="message" required></textarea><br><br>
+        </div>
 
-        <label for="icon">Icon URL:</label><br>
-        <input type="text" id="icon" name="icon"><br><br>
+        <div class="form-group">
+            <label for="icon">Icon URL:</label><br>
+            <input type="text" class="form-control" id="icon" name="icon"><br><br>
+        </div>
 
-        <label for="url">URL:</label><br>
-        <input type="text" id="url" name="url"><br><br>
+        <div class="form-group">
+            <label for="url">URL:</label><br>
+            <input type="text" class="form-control" id="url" name="url"><br><br>
+        </div>
 
-        <input type="submit" value="Submit">
+        <input type="submit" class="btn btn-primary" value="Submit">
     </form>
-
-</body>
-
-</html>
+</div>

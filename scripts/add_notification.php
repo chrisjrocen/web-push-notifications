@@ -1,8 +1,8 @@
 <?php
 // Database connection parameters
 $servername = "localhost";
-$username = "root"; // Change this to your database username
-$password = ""; // Change this to your database password
+$username = "root"; 
+$password = "";
 $dbname = "myDB";
 
 try {
@@ -29,11 +29,21 @@ try {
     // Execute the prepared statement
     $stmt->execute();
 
-    echo "Notification added successfully";
+    // Close the PDO connection
+    $pdo = null;
+
+    // Echo a script to display the pop-up notification
+    echo '<script>
+     alert("Notification added successfully");
+     window.addEventListener("load", function() {
+         $(".alert").on("closed.bs.alert", function() {
+             window.history.back();
+         });
+     });
+     </script>';
+    
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-// Close the PDO connection
-$pdo = null;
 ?>
